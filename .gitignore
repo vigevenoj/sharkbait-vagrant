@@ -5,6 +5,7 @@
 [Ll]ib
 [Ll]ib64
 [Ll]ocal
+[Ee]tc
 pyvenv.cfg
 .venv
 pip-selfcheck.json
