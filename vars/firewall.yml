@@ -1,8 +1,0 @@
-firewall_allowed_tcp_ports:
-  - "22"    # ssh
-  - "80"    # http
-  - "443"   # https
-  - "8883"  # mqtts
-  - "8884"  # mqtt websockets
-  - "8885"  # mqtt insecure (embedded sensors)
-  - "8086"  # influxdb

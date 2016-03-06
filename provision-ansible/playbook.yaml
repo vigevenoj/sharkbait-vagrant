@@ -1,7 +1,0 @@
-- name: configure and deploy firewall rules
-  hosts: all
-  remote_user: vagrant
-  vars_files:
-    - vars/firewall.yml
-  roles:
-    - { role: geerlingguy.firewall }
