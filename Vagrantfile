@@ -13,7 +13,7 @@ Vagrant.configure(2) do |config|
     puppet.facter = {
       "fqdn" => config.vm.hostname
     }
-    puppet.module_path = "puppet/modules"
-    puppet.manifests_path = "puppet/manifests"
+    puppet.environment_path = "puppet/environments"
+    puppet.environment = "vagrant"
   end
 end
