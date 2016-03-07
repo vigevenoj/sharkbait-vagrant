@@ -130,5 +130,27 @@ node 'vagrant-centos7.local' {
     mode   => 2775,
   }
 
+  class { 'postgresql::globals':
+    version             => '9.4',
+    manage_package_repo => true,
+    needs_initdb        => false,
+    service_name        => 'postgresql-9.4',
+    encoding            => 'UTF-8',
+    locale              => 'en_US.UTF-8',
+  }->
+  class { 'postgresql::server':
+    listen_addresses        => 'localhost',
+    postgres_password       => 'postgres',
+    ip_mask_allow_all_users => '127.0.0.1/32',
+    ipv4acls                => 'local all all md5'],
+  }
 
+  postgresql::server::db { 'workouts':
+    user     => 'workout',
+    password => 'runrunrun',
+  }
+  postgresql::server::db { 'huginn':
+    user     => 'huginn',
+    password => 'myhuginnpassword',
+  }
 }
