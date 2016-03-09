@@ -15,5 +15,7 @@ Vagrant.configure(2) do |config|
     }
     puppet.environment_path = "puppet/environments"
     puppet.environment = "vagrant"
+    puppet.hiera_config_path = "puppet/hiera.yaml"
+    #puppet.options = "--verbose --debug"
   end
 end
