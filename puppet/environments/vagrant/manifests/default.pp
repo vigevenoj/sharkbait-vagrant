@@ -167,3 +167,6 @@ vcsrepo { '/opt/huginn/huginn':
   ensure   => present,
 }
 
+# mosquitto: configuration = base + websockets + embedded short tls cert devices
+# mosquitto: users?
+
