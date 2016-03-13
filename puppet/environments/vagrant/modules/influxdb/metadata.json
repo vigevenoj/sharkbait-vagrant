@@ -1,0 +1,49 @@
+{
+  "name": "olivierHa-influxdb",
+  "version": "0.5.0",
+  "author": "Olivier Hanesse",
+  "summary": "Puppet module to manage InfluxDB 0.10 or 0.9 and its plugins like graphite or collectd",
+  "license": "Apache-2.0",
+  "source": "https://github.com/olivierHa/puppet-influxdb",
+  "project_page": "https://github.com/olivierHa/puppet-influxdb",
+  "issues_url": "https://github.com/olivierHa/puppet-influxdb/issues",
+  "dependencies": [
+    {"name":"puppetlabs/stdlib","version_requirement":">=3.2.0 <5.0.0"},
+    {"name":"puppetlabs/apt","version_requirement":">=1.8.0 <3.0.0"}
+  ],
+  "data_provider": null,
+  "tags": [
+    "influxdb",
+    "monitoring",
+    "tsdb",
+    "graphite",
+    "collectd"
+  ],
+  "requirements": [
+    {
+      "name": "pe",
+      "version_requirement": ">= 3.0.0 < 2015.3.0"
+    },
+    {
+      "name": "puppet",
+      "version_requirement": ">= 3.0.0 < 5.0.0"
+    }
+  ],
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "6",
+        "7"
+      ]
+    },
+    {
+      "operatingsystem": "RedHat",
+      "operatingsystemrelease": [
+        "5",
+        "6",
+        "7"
+      ]
+    }
+  ]
+}

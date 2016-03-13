@@ -1,0 +1,245 @@
+### Welcome to the InfluxDB configuration file.
+
+
+<% @main_section.sort_by{|key, value| key}.each do |key, value| %><%
+    if ( value =~ /^[\d]+$/ ) || value.is_a?(Integer) || value.is_a?(TrueClass) || value.is_a?(FalseClass) || value.is_a?(Float)
+  %>  <%= key %> = <%= value %><%
+    else
+  %>  <%= key %> = "<%= value %>"<% 
+  end %>
+<% end %>
+
+###
+### [meta]
+###
+### Controls the parameters for the Raft consensus group that stores metadata
+### about the InfluxDB cluster.
+###
+
+[meta]
+<% @meta_section.sort_by{|key, value| key}.each do |key, value| %><%
+    if ( value =~ /^[\d]+$/ ) || value.is_a?(Integer) || value.is_a?(TrueClass) || value.is_a?(FalseClass) || value.is_a?(Float)
+  %>  <%= key %> = <%= value %><%
+    else
+  %>  <%= key %> = "<%= value %>"<% 
+  end %>
+<% end %>
+
+
+###
+### [data]
+###
+### Controls where the actual shard data for InfluxDB lives and how it is
+### flushed from the WAL. "dir" may need to be changed to a suitable place
+### for your system, but the WAL settings are an advanced configuration. The
+### defaults should work for most systems.
+###
+
+[data]
+<% @data_section.sort_by{|key, value| key}.each do |key, value| %><%
+    if ( value =~ /^[\d\.]+$/ ) || value.is_a?(Integer) || value.is_a?(TrueClass) || value.is_a?(FalseClass) || value.is_a?(Float)
+  %>  <%= key %> = <%= value %><%
+    else
+  %>  <%= key %> = "<%= value %>"<% 
+  end %>
+<% end %>
+
+###
+### [cluster]
+###
+### Controls non-Raft cluster behavior, which generally includes how data is
+### shared across shards.
+###
+
+[cluster]
+<% @cluster_section.sort_by{|key, value| key}.each do |key, value| %><%
+    if ( value =~ /^[\d]+$/ ) || value.is_a?(Integer) || value.is_a?(TrueClass) || value.is_a?(FalseClass) || value.is_a?(Float)
+  %>  <%= key %> = <%= value %><%
+    else
+  %>  <%= key %> = "<%= value %>"<% 
+  end %>
+<% end %>
+
+###
+### [retention]
+###
+### Controls the enforcement of retention policies for evicting old data.
+###
+
+[retention]
+<% @retention_section.sort_by{|key, value| key}.each do |key, value| %><%
+    if ( value =~ /^[\d]+$/ ) || value.is_a?(Integer) || value.is_a?(TrueClass) || value.is_a?(FalseClass) || value.is_a?(Float)
+  %>  <%= key %> = <%= value %><%
+    else
+  %>  <%= key %> = "<%= value %>"<% 
+  end %>
+<% end %>
+
+
+[shard-precreation]
+<% @shard_precreation_section.sort_by{|key, value| key}.each do |key, value| %><%
+    if ( value =~ /^[\d]+$/ ) || value.is_a?(Integer) || value.is_a?(TrueClass) || value.is_a?(FalseClass) || value.is_a?(Float)
+  %>  <%= key %> = <%= value %><%
+    else
+  %>  <%= key %> = "<%= value %>"<% 
+  end %>
+<% end %>
+
+###
+### [admin]
+###
+### Controls the availability of the built-in, web-based admin interface.
+###
+
+[admin]
+<% @admin_section.sort_by{|key, value| key}.each do |key, value| %><%
+    if ( value =~ /^[\d]+$/ ) || value.is_a?(Integer) || value.is_a?(TrueClass) || value.is_a?(FalseClass) || value.is_a?(Float)
+  %>  <%= key %> = <%= value %><%
+    else
+  %>  <%= key %> = "<%= value %>"<% 
+  end %>
+<% end %>
+
+
+###
+### [http]
+###
+### Controls how the HTTP endpoints are configured. These are the primary
+### mechanism for getting data into and out of InfluxDB.
+###
+
+[http]
+<% @http_section.sort_by{|key, value| key}.each do |key, value| %><%
+    if ( value =~ /^[\d]+$/ ) || value.is_a?(Integer) || value.is_a?(TrueClass) || value.is_a?(FalseClass) || value.is_a?(Float)
+  %>  <%= key %> = <%= value %><%
+    else
+  %>  <%= key %> = "<%= value %>"<% 
+  end %>
+<% end %>
+###
+### [[graphite]]
+###
+### Controls one or many listeners for Graphite data.
+###
+<% @graphites_section.sort_by{|key, value| key}.each do |key, graphite_section| %>
+[[graphite]]
+<% graphite_section.sort_by{|key, value| key}.each do |key, value| %><%
+  if ( value =~ /^[\d]+$/ ) || value.is_a?(Integer) || value.is_a?(TrueClass) || value.is_a?(FalseClass) || value.is_a?(Float) || value.is_a?(Array)
+  %>  <%= key %> = <%= value %><%
+  else 
+  %>  <%= key %> = "<%= value %>"<% 
+  end %>
+<% end %>
+<% end %>
+
+###
+### [collectd]
+###
+### Controls the listener for collectd data.
+###
+
+[collectd]
+<% @collectd_section.sort_by{|key, value| key}.each do |key, value| %><%
+    if ( value =~ /^[\d]+$/ ) || value.is_a?(Integer) || value.is_a?(TrueClass) || value.is_a?(FalseClass) || value.is_a?(Float)
+  %>  <%= key %> = <%= value %><%
+    else
+  %>  <%= key %> = "<%= value %>"<% 
+  end %>
+<% end %>
+
+###
+### [opentsdb]
+###
+### Controls the listener for OpenTSDB data.
+###
+
+[opentsdb]
+<% @opentsdb_section.sort_by{|key, value| key}.each do |key, value| %><%
+    if ( value =~ /^[\d]+$/ ) || value.is_a?(Integer) || value.is_a?(TrueClass) || value.is_a?(FalseClass) || value.is_a?(Float)
+  %>  <%= key %> = <%= value %><%
+    else
+  %>  <%= key %> = "<%= value %>"<% 
+  end %>
+<% end %>
+
+###
+### [udp]
+###
+### Controls the listener for InfluxDB line protocol data via UDP.
+###
+
+[[udp]]
+<% @udp_section.sort_by{|key, value| key}.each do |key, value| %><%
+    if ( value =~ /^[\d]+$/ ) || value.is_a?(Integer) || value.is_a?(TrueClass) || value.is_a?(FalseClass) || value.is_a?(Float)
+  %>  <%= key %> = <%= value %><%
+    else
+  %>  <%= key %> = "<%= value %>"<% 
+  end %>
+<% end %>
+
+###
+### [monitoring]
+###
+[monitor]
+<% @monitor_section.sort_by{|key, value| key}.each do |key, value| %><%
+    if ( value =~ /^[\d]+$/ ) || value.is_a?(Integer) || value.is_a?(TrueClass) || value.is_a?(FalseClass) || value.is_a?(Float)
+  %>  <%= key %> = <%= value %><%
+    else
+  %>  <%= key %> = "<%= value %>"<% 
+  end %>
+<% end %>
+
+###
+### [continuous_queries]
+###
+### Controls how continuous queries are run within InfluxDB.
+###
+
+[continuous_queries]
+<% @continuous_queries_section.sort_by{|key, value| key}.each do |key, value| %><%
+    if ( value =~ /^[\d]+$/ ) || value.is_a?(Integer) || value.is_a?(TrueClass) || value.is_a?(FalseClass) || value.is_a?(Float)
+  %>  <%= key %> = <%= value %><%
+    else
+  %>  <%= key %> = "<%= value %>"<% 
+  end %>
+<% end %>
+
+###
+### [hinted-handoff]
+###
+### Controls the hinted handoff feature, which allows nodes to temporarily
+### store queued data when one node of a cluster is down for a short period
+### of time.
+###
+[hinted-handoff]
+<% @hh_section.sort_by{|key, value| key}.each do |key, value| %><%
+    if ( value =~ /^[\d]+$/ ) || value.is_a?(Integer) || value.is_a?(TrueClass) || value.is_a?(FalseClass) || value.is_a?(Float)
+  %>  <%= key %> = <%= value %><%
+    else
+  %>  <%= key %> = "<%= value %>"<% 
+  end %>
+<% end %>
+
+###
+### [snapshot]
+###
+[snapshot]
+<% @snapshot_section.sort_by{|key, value| key}.each do |key, value| %><%
+    if ( value =~ /^[\d]+$/ ) || value.is_a?(Integer) || value.is_a?(TrueClass) || value.is_a?(FalseClass) || value.is_a?(Float)
+  %>  <%= key %> = <%= value %><%
+    else
+  %>  <%= key %> = "<%= value %>"<% 
+  end %>
+<% end %>
+
+###
+### [subscriber]
+###
+[subscriber]
+<% @subscriber_section.sort_by{|key, value| key}.each do |key, value| %><%
+    if ( value =~ /^[\d]+$/ ) || value.is_a?(Integer) || value.is_a?(TrueClass) || value.is_a?(FalseClass) || value.is_a?(Float)
+  %>  <%= key %> = <%= value %><%
+    else
+  %>  <%= key %> = "<%= value %>"<% 
+  end %>
+<% end %>

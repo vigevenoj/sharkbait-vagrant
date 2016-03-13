@@ -145,21 +145,21 @@ class { 'postgresql::globals':
   encoding            => 'UTF-8',
   locale              => 'en_US.UTF-8',
   }->
-  class { 'postgresql::server':
-    listen_addresses        => 'localhost',
-    postgres_password       => 'postgres',
-    ip_mask_allow_all_users => '127.0.0.1/32',
-    ipv4acls                => ['local all all md5'],
-  }
+class { 'postgresql::server':
+  listen_addresses        => 'localhost',
+  postgres_password       => 'postgres',
+  ip_mask_allow_all_users => '127.0.0.1/32',
+  ipv4acls                => ['local all all md5'],
+}
 
-  postgresql::server::db { 'workouts':
-    user     => 'workout',
-    password => 'runrunrun',
-  }
-  postgresql::server::db { 'huginn':
-    user     => 'huginn',
-    password => 'myhuginnpassword',
-  }
+postgresql::server::db { 'workouts':
+  user     => 'workout',
+  password => 'runrunrun',
+}
+postgresql::server::db { 'huginn':
+  user     => 'huginn',
+  password => 'myhuginnpassword',
+}
 
 vcsrepo { '/opt/huginn/huginn':
   provider => git,
@@ -170,3 +170,5 @@ vcsrepo { '/opt/huginn/huginn':
 # mosquitto: configuration = base + websockets + embedded short tls cert devices
 # mosquitto: users?
 
+class { 'influxdb':
+}
