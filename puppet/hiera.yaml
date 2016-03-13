@@ -3,7 +3,7 @@
   - yaml
 
 :hierarchy:
-  - "common"
+  - common
 
 :yaml:
   :datadir: '/vagrant/puppet/hiera'
