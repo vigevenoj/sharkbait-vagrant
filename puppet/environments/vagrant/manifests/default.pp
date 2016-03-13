@@ -160,3 +160,10 @@ class { 'postgresql::globals':
     user     => 'huginn',
     password => 'myhuginnpassword',
   }
+
+vcsrepo { '/opt/huginn/huginn':
+  provider => git,
+  source   => "https://github.com/vigevenoj/huginn.git",
+  ensure   => present,
+}
+
