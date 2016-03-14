@@ -1,3 +1,12 @@
+yumrepo { 'home_oojah_mqtt':
+  ensure   => 'present',
+  baseurl  => 'http://download.opensuse.org/repositories/home:/oojah:/mqtt/CentOS_CentOS-7/',
+  descr    => 'mqtt (CentOS_CentOS-7)',
+  enabled  => '1',
+  gpgcheck => '1',
+  gpgkey   => 'http://download.opensuse.org/repositories/home:/oojah:/mqtt/CentOS_CentOS-7/repodata/repomd.xml.key',
+}
+
 resources { "firewall":
   purge => true
 }
@@ -169,6 +178,14 @@ vcsrepo { '/opt/huginn/huginn':
 
 # mosquitto: configuration = base + websockets + embedded short tls cert devices
 # mosquitto: users?
+file { '/tmp/mosquitto-ws.conf':
+  source => "puppet:///modules/mosquitto/mosquitto-ws.conf",
+}
+
+file { '/tmp/mosquitto-esp.conf':
+  source => "puppet:///modules/mosquitto/mosquitto-esp.conf",
+}
+
 
 class { 'influxdb':
 }
