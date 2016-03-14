@@ -7,6 +7,16 @@ yumrepo { 'home_oojah_mqtt':
   gpgkey   => 'http://download.opensuse.org/repositories/home:/oojah:/mqtt/CentOS_CentOS-7/repodata/repomd.xml.key',
 }
 
+yumrepo { 'epel':
+  ensure         => 'present',
+  descr          => 'Extra Packages for Enterprise Linux 7 - $basearch',
+  enabled        => '1',
+  failovermethod => 'priority',
+  gpgcheck       => '1',
+  gpgkey         => 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7',
+  mirrorlist     => 'https://mirrors.fedoraproject.org/metalink?repo=epel-7&arch=$basearch',
+}
+
 resources { "firewall":
   purge => true
 }
