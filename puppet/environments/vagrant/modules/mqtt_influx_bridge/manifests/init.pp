@@ -10,6 +10,24 @@ class mqtt_influx_bridge (
   $influx_password
 ) {
 
+  package { 'rubygems':
+    ensure => 'present',
+  }
+  package { 'ruby-devel':
+    ensure => 'latest',
+  }
+  package { 'mqtt':
+    ensure   => 'latest',
+    provider => 'gem',
+  }
+  package { 'json':
+    ensure   => 'latest',
+    provider => 'gem',
+  }
+  package { 'logger':
+    ensure   => 'latest',
+    provider => 'gem',
+  }
 
   file { '/opt/mqtt_influx_bridge':
     ensure => 'directory',
