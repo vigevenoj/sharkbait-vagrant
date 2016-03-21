@@ -142,9 +142,6 @@ file { '/var/www/sharkbaitextraordinaire.com':
   mode   => '2775',
 }
 
-notify { 'message':
-  message => hiera('message'),
-}
 
 #  file { '/opt/huginn':
 #    ensure => 'directory'
