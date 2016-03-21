@@ -196,6 +196,17 @@ file { '/tmp/mosquitto-esp.conf':
   source => "puppet:///modules/mosquitto/mosquitto-esp.conf",
 }
 
+class { 'mqtt_influx_bridge':
+  mqtt_host       => hiera('mqtt_influx_bridge::mqtt::host'),
+  mqtt_port       => hiera('mqtt_influx_bridge::mqtt::port'),
+  mqtt_username   => hiera('mqtt_influx_bridge::mqtt::username'),
+  mqtt_password   => hiera('mqtt_influx_bridge::mqtt::password'),
+  mqtt_topic      => hiera('mqtt_influx_bridge::mqtt::topic'),
+
+  influx_database => hiera('mqtt_influx_bridge::influxdb::database'),
+  influx_username => hiera('mqtt_influx_bridge::influxdb::username'),
+  influx_password => hiera('mqtt_influx_bridge::influxdb::password'),
+}
 
 class { 'influxdb':
 }
