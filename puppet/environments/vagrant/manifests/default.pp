@@ -79,6 +79,11 @@ class my_fw::pre {
         proto  => 'tcp',
         action => 'accept',
       }
+      firewall { '106 allow openvpn':
+        dport  => '1194',
+        proto  => 'udp',
+        action => 'accept',
+      }
 }
 class my_fw::post {
   firewall { '999 drop all':
